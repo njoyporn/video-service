@@ -1,0 +1,254 @@
+{
+    "video_service": {
+        "hostname":"0.0.0.0",
+        "port": 8631,
+        "cors_enabled": true,
+        "allowed_domains":["*"],
+        "rsa_enabled": true
+    },
+    "database":{
+        "hostname":"njoyporn.com",
+        "port":8612,
+        "name":"njoy",
+        "page_size": 15,
+        "admin":{
+            "username":"root",
+            "password":"verysecret"
+        },
+        "user":{
+            "username":"guest",
+            "password":"secret"
+        },
+        "tables": [
+            {
+                "name":"videos",
+                "fields":[
+                    {
+                        "name":"uid",
+                        "type":"int",
+                        "std":"auto_increment primary key"
+                    },
+                    {
+                        "name":"id",
+                        "type":"varchar(32)",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"original_filename",
+                        "type":"varchar(256)",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"filename",
+                        "type":"varchar(256)",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"title",
+                        "type":"varchar(256)",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"description",
+                        "type":"varchar(1024)",
+                        "std":""
+                    },
+                    {
+                        "name":"duration",
+                        "type":"int",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"categories",
+                        "type":"varchar(1024)",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"sub_categories",
+                        "type":"varchar(512)",
+                        "std":""
+                    },
+                    {
+                        "name":"happy_ends",
+                        "type":"varchar(512)",
+                        "std":""
+                    },
+                    {
+                        "name":"tags",
+                        "type":"varchar(512)",
+                        "std":""
+                    },
+                    {
+                        "name":"likes",
+                        "type":"int",
+                        "std":"default 0"
+                    },
+                    {
+                        "name":"dislikes",
+                        "type":"int",
+                        "std":"default 0"
+                    },
+                    {
+                        "name":"views",
+                        "type":"varchar(512)",
+                        "std":"default 0"
+                    },
+                    {
+                        "name":"visibil",
+                        "type":"boolean",
+                        "std":"default 1"
+                    },
+                    {
+                        "name":"visibility",
+                        "type":"varchar(512)",
+                        "std":""
+                    },
+                    {
+                        "name":"public",
+                        "type":"boolean",
+                        "std":""
+                    },
+                    {
+                        "name":"free",
+                        "type":"boolean",
+                        "std":""
+                    },
+                    {
+                        "name":"trailer",
+                        "type":"boolean",
+                        "std":""
+                    },
+                    {
+                        "name":"type",
+                        "type":"varchar(32)",
+                        "std":""
+                    },
+                    {
+                        "name":"rules",
+                        "type":"varchar(256)",
+                        "std":""
+                    },
+                    {
+                        "name":"flags",
+                        "type":"varchar(64)",
+                        "std":""
+                    },
+                    {
+                        "name":"url",
+                        "type":"varchar(2048)",
+                        "std":""
+                    },
+                    {
+                        "name":"thumbnail_url",
+                        "type":"varchar(2048)",
+                        "std":""
+                    },
+                    {
+                        "name":"spnsored_url",
+                        "type":"varchar(2048)",
+                        "std":""
+                    },
+                    {
+                        "name":"owner_id",
+                        "type":"varchar(32)",
+                        "std":""
+                    },
+                    {
+                        "name":"timestamps",
+                        "type": "varchar(512)",
+                        "std": ""
+                    },
+                    {
+                        "name":"action_stamps",
+                        "type": "varchar(1024)",
+                        "std": ""
+                    },
+                    {
+                        "name":"created_at",
+                        "type": "datetime",
+                        "std": "not null"
+                    },
+                    {
+                        "name":"updated_at",
+                        "type": "datetime",
+                        "std": "not null"
+                    },
+                    {
+                        "name":"soft_delete",
+                        "type": "bool",
+                        "std":"default 0"
+                    }
+                ]
+            }
+        ],
+        "serviceTables": [
+            {
+                "name":"serviceState",
+                "fields":[
+                    {
+                        "name":"id",
+                        "type":"int",
+                        "std":"auto_increment primary key"
+                    },
+                    {
+                        "name":"name",
+                        "type":"varchar(128)",
+                        "std":"not null"
+                    },
+                    {
+                        "name":"value",
+                        "type":"varchar(1024)",
+                        "std":""
+                    },
+                    {
+                        "name":"comment",
+                        "type":"varchar(1024)",
+                        "std":""
+                    },
+                    {
+                        "name":"datetime",
+                        "type": "datetime",
+                        "std": "not null"
+                    },
+                    {
+                        "name":"soft_delete",
+                        "type": "bool",
+                        "std":"default 0"
+                    }
+                ]
+            }
+        ]
+    },
+    "roles":{
+        "administrator":"administrator",
+        "moderator":"moderator",
+        "user":"user",
+        "guest":"guest"
+    },
+    "limits":{
+        "request_limit":{
+            "guest":1000,
+            "user":10000,
+            "moderator":"~~",
+            "administrator":"~~"
+        }
+    },
+    "security":{
+        "keys":{
+            "key_directory": "/backend_shared/security/.keys",
+            "public_key_path": "/backend_shared/security/.keys/public_key.pem",
+            "private_key_path": "/backend_shared/security/.keys/private_key.pem"
+        }
+    },
+    "verwaltung":{
+        "admin":{
+            "username":"admin",
+            "password":"verysecret",
+            "email":"info@njoy.com"
+        }
+    },
+    "data":{
+        "path":"data"
+    },
+    "debug":false
+}

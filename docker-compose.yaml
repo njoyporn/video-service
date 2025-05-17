@@ -1,0 +1,15 @@
+services:
+  njoy-video-service:
+    env_file: ".env"
+    image: njoy-video-service
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    volumes: 
+      - /${VOLUME}/njoy-video-service/config:/njoy-video-service/config
+      - /${VOLUME}/njoy-video-service/keys:/njoy-video-service/backend_shared/security/.keys
+      - /${VOLUME}/njoy-video-service/logs:/njoy-video-service/logs
+      - /${VOLUME}/njoy-backend/data/downloads:/njoy-video-service/data/downloads
+      - /${DATA_VOLUME}/nnjoy/app/data/thumbnails:/njoy-video-service/data/thumbnails
+      - /${DATA_VOLUME}/nnjoy/app/data/videos:/njoy-video-service/data/videos
+    ports:
+      - ${API_PORT}:${API_PORT}
