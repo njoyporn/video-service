@@ -23,19 +23,19 @@ mkdir /opt/njoy-backend/logs
 **Create Key-Pair**
 ```bash
 #those should already exist because this service depends on the njoy-backend
-mv backend-shared/security/.keys/temp.py
+mv backend_shared/security/.keys/temp.py
 python3 temp.py
-mv temp.py /backend-shared/security.keys/temp.py
+mv temp.py /backend_shared/security.keys/temp.py
 ```
 **Move keys to volume**
 ```bash
 #those should already exist because this service depends on the njoy-backend
-mv *.pem /opt/njoy-backend/keys
+mv *.pem /opt/njoy-video-service/keys
 ```
 **Copy config to volume**
 ```bash
 #the config should already exist because this service depends on the njoy-backend
-mv config/example.config.json /opt/njoy-backend/config/config.json
+mv config/example.config.json /opt/njoy-video-service/config/config.json
 # open config to edit
 nano config.json
 ```
@@ -106,8 +106,6 @@ a2enmod headers
     RewriteRule         ^/(.*) http://localhost:6692/$1 [P,L]
     ProxyPassReverse    / http://localhost:6692/
     
-    #ProxyPass /video-service http://localhost:6695/video
-    #ProxyPassReverse /video-service http://localhos:6695/video
     ...
 </VirtualHost>
 </IfModule>
